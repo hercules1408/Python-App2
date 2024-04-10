@@ -1,16 +1,34 @@
-# This is a sample Python script.
+import streamlit as st
+import pandas as pd
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+st.set_page_config(layout="wide")
+
+col1, col2 = st.columns(2)
+
+with col1:
+    st.image("images/photo.png", width=600)
+
+with col2:
+    st.title("Sanjay Singh")
+    content = """
+    Hi, I am Sanjay! I am a Python programmer, teacher, and founder of PythonHow. I graduated in 2015 with a ECE branch from the GLA University with a focus on using Python for remote sensing.
+I have worked with companies from various countries, such as the Center for Conservation Geography, to map and understand Australian ecosystems, image processing with the Swiss in-Terra, and performing data mining to gain business insights with the Australian Rapid Intelligence.
+    """
+    st.info(content)
+
+content2 = """
+Below you can find  some of the apps i have built  in python. Feel free to contact me! 
+"""
+st.write(content2)
+
+col3, col4 = st.columns(2)
+df = pd.read_csv('data.csv',sep=";")
+
+with col3:
+    for index , row in df[:10].iterrows():
+        st.header(row["title"])
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+with col4 :
+    for index , row in df[10:].iterrows():
+        st.header(row["title"])
